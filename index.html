@@ -15,6 +15,9 @@
 
     <!-- External Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- EmailJS SDK for working contact form -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -75,7 +78,9 @@
             <h2 class="section-title reveal">About <span>Me</span></h2>
             <p class="section-subtitle reveal">A peek into who I am and what I do</p>
             <div class="about-grid">
-                <div class="profile-photo reveal" aria-label="Profile photo placeholder"></div>
+                <div class="profile-photo reveal">
+                    <img src="profile.jpg" alt="Vedant Waghmare">
+                </div>
                 <div class="about-text reveal">
                     <h3>Building reliable software, one solution at a time</h3>
                     <p>
@@ -579,29 +584,89 @@
         statNumbers.forEach(num => statObserver.observe(num));
 
         /* ----------------------------------------------
-           Contact form (mock submission — replace with
-           Formspree, EmailJS, or your own backend)
+           Contact form — Powered by EmailJS
+           Sends real emails to vedantw.2004@gmail.com
            ---------------------------------------------- */
+
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init({
+                publicKey: "1Wrj8MhiM8MoPO2v_",
+            });
+        })();
+
         const sendBtn = document.getElementById('sendBtn');
         const formStatus = document.getElementById('formStatus');
 
-        sendBtn.addEventListener('click', () => {
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
+        sendBtn.addEventListener('click', async () => {
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
 
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageInput.value.trim();
+
+            // Basic validation
             if (!name || !email || !message) {
-                alert('Please fill in all fields.');
+                showStatus('error', 'Please fill in all fields before sending.');
                 return;
             }
 
-            formStatus.classList.add('success');
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('message').value = '';
+            // Email format validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showStatus('error', 'Please enter a valid email address.');
+                return;
+            }
 
-            setTimeout(() => formStatus.classList.remove('success'), 4000);
+            // Disable button + show loading state
+            const originalBtnHTML = sendBtn.innerHTML;
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+            try {
+                // Template parameters — these MUST match the variables in your EmailJS template
+                const templateParams = {
+                    from_name: name,
+                    from_email: email,
+                    message: message,
+                };
+
+                // Send email via EmailJS
+                await emailjs.send(
+                    'service_0t2p4bj',     // Service ID
+                    'template_kbf1f8h',    // Template ID
+                    templateParams
+                );
+
+                // Success!
+                showStatus('success', "Thanks! Your message has been sent. I'll get back to you soon.");
+                nameInput.value = '';
+                emailInput.value = '';
+                messageInput.value = '';
+            } catch (error) {
+                console.error('EmailJS error:', error);
+                showStatus('error', 'Oops! Something went wrong. Please try again or email me directly at vedantw.2004@gmail.com');
+            } finally {
+                // Restore button state
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = originalBtnHTML;
+            }
         });
+
+        // Helper function to show status messages
+        function showStatus(type, message) {
+            formStatus.className = 'form-status ' + type;
+            formStatus.innerHTML = type === 'success'
+                ? `<i class="fas fa-check-circle"></i> ${message}`
+                : `<i class="fas fa-exclamation-circle"></i> ${message}`;
+
+            // Auto-hide after 6 seconds
+            setTimeout(() => {
+                formStatus.className = 'form-status';
+            }, 6000);
+        }
 
         /* ----------------------------------------------
            Active nav link highlighting
