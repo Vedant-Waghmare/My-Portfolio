@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Vedant Waghmare — Salesforce Developer & Java Developer. Aspiring AI Full Stack Engineer building scalable backend systems and CRM solutions.">
+    <meta name="keywords" content="Vedant Waghmare, Salesforce Developer, Java Developer, Software Developer, Pune, Cognizant, AI, Full Stack">
+    <meta name="author" content="Vedant Waghmare">
+
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Vedant Waghmare | Salesforce Developer & Java Developer">
+    <meta property="og:description" content="Aspiring AI Full Stack Engineer building scalable backend systems, RESTful APIs, and enterprise CRM solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="Profile.png">
+
     <title>Vedant Waghmare | Salesforce Developer & Java Developer</title>
+
+    <!-- Favicon (uses your initials) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300d4ff'/%3E%3Cstop offset='100%25' style='stop-color:%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='65' font-family='monospace' font-size='45' font-weight='800' text-anchor='middle' fill='url(%23g)'%3EVW%3C/text%3E%3C/svg%3E">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -16,10 +30,24 @@
     <!-- External Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- EmailJS SDK for working contact form -->
+    <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
+
+    <!-- Page Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">&lt;Vedant/&gt;</div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Floating Particles Background -->
+    <div class="particles" id="particles"></div>
 
     <!-- ============================================
          NAVBAR
@@ -38,9 +66,15 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon icon-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -50,13 +84,14 @@
     <section class="hero" id="home">
         <div class="hero-shape shape-1"></div>
         <div class="hero-shape shape-2"></div>
+        <div class="hero-shape shape-3"></div>
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="pulse"></span>
-                Currently @ Cognizant
+                Currently @ Cognizant Technology Solutions
             </div>
             <h1>Hi, I'm <span class="gradient-text">Vedant Waghmare</span></h1>
-            <div class="hero-title">&lt; Salesforce Developer | Java Developer /&gt;</div>
+            <div class="hero-title">&lt; <span class="typed-text" id="typedText"></span> /&gt;</div>
             <p class="hero-tagline">
                 Aspiring AI Full Stack Engineer building scalable backend systems, RESTful APIs,
                 and enterprise CRM solutions — with a passion for integrating AI into the real world.
@@ -70,7 +105,42 @@
                 </a>
             </div>
         </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
+
+    <!-- Tech Stack Marquee -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-item"><i class="fab fa-java"></i> Java</div>
+            <div class="marquee-item"><i class="fab fa-python"></i> Python</div>
+            <div class="marquee-item"><i class="fas fa-cloud"></i> Salesforce</div>
+            <div class="marquee-item"><i class="fab fa-html5"></i> HTML5</div>
+            <div class="marquee-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+            <div class="marquee-item"><i class="fab fa-js"></i> JavaScript</div>
+            <div class="marquee-item"><i class="fas fa-database"></i> MySQL</div>
+            <div class="marquee-item"><i class="fab fa-git-alt"></i> Git</div>
+            <div class="marquee-item"><i class="fab fa-github"></i> GitHub</div>
+            <div class="marquee-item"><i class="fab fa-aws"></i> AWS</div>
+            <div class="marquee-item"><i class="fas fa-robot"></i> AI/ML</div>
+            <div class="marquee-item"><i class="fab fa-bootstrap"></i> Bootstrap</div>
+            <!-- Duplicate for seamless loop -->
+            <div class="marquee-item"><i class="fab fa-java"></i> Java</div>
+            <div class="marquee-item"><i class="fab fa-python"></i> Python</div>
+            <div class="marquee-item"><i class="fas fa-cloud"></i> Salesforce</div>
+            <div class="marquee-item"><i class="fab fa-html5"></i> HTML5</div>
+            <div class="marquee-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+            <div class="marquee-item"><i class="fab fa-js"></i> JavaScript</div>
+            <div class="marquee-item"><i class="fas fa-database"></i> MySQL</div>
+            <div class="marquee-item"><i class="fab fa-git-alt"></i> Git</div>
+            <div class="marquee-item"><i class="fab fa-github"></i> GitHub</div>
+            <div class="marquee-item"><i class="fab fa-aws"></i> AWS</div>
+            <div class="marquee-item"><i class="fas fa-robot"></i> AI/ML</div>
+            <div class="marquee-item"><i class="fab fa-bootstrap"></i> Bootstrap</div>
+        </div>
+    </div>
 
     <!-- ============================================
          ABOUT
@@ -107,7 +177,7 @@
                             <div class="stat-label">Projects Done</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-number" data-target="5">0</div>
+                            <div class="stat-number" data-target="7">0</div>
                             <div class="stat-label">Certifications</div>
                         </div>
                     </div>
@@ -134,7 +204,7 @@
                     </div>
                 </div>
                 <div class="skill-category reveal">
-                    <h3><i class="fas fa-layer-group"></i> Frameworks &amp; Libraries</h3>
+                    <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Spring Boot</span>
                         <span class="skill-tag">RESTful APIs</span>
@@ -145,7 +215,7 @@
                     </div>
                 </div>
                 <div class="skill-category reveal">
-                    <h3><i class="fas fa-tools"></i> Tools &amp; Platforms</h3>
+                    <h3><i class="fas fa-tools"></i> Tools</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Git</span>
                         <span class="skill-tag">GitHub</span>
@@ -185,9 +255,9 @@
                         <div class="timeline-header">
                             <div>
                                 <div class="timeline-role">Salesforce Developer Intern</div>
-                                <div class="timeline-company">Cognizant · Onsite</div>
+                                <div class="timeline-company">Cognizant Technology Solutions · Onsite</div>
                             </div>
-                            <span class="timeline-duration">2025 — Present</span>
+                            <span class="timeline-duration">Feb 2026 — Present</span>
                         </div>
                         <ul>
                             <li>Working on Salesforce development and customization within enterprise environments</li>
@@ -203,7 +273,7 @@
                                 <div class="timeline-role">AI &amp; Data Science Intern</div>
                                 <div class="timeline-company">Genniesphere · Hybrid</div>
                             </div>
-                            <span class="timeline-duration">2024</span>
+                            <span class="timeline-duration">Aug 2025 — Nov 2025</span>
                         </div>
                         <ul>
                             <li>Developed an AI-driven Job–Resume Evaluation System leveraging advanced NLP and ML models to accurately match candidate resumes with job descriptions</li>
@@ -219,7 +289,7 @@
                                 <div class="timeline-role">Web Development Intern</div>
                                 <div class="timeline-company">RightShift Infotech · Onsite</div>
                             </div>
-                            <span class="timeline-duration">2024</span>
+                            <span class="timeline-duration">Dec 2024 — Jan 2025</span>
                         </div>
                         <ul>
                             <li>Developed and deployed a fully functional e-commerce website for a grocery store, demonstrating practical application of modern web development frameworks</li>
@@ -254,8 +324,8 @@
                         <span class="tech-tag">Flows</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link github"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="project-link live"><i class="fas fa-external-link-alt"></i> Live</a>
+                        <a href="#" class="project-link github" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        <a href="https://orgfarm-fee486e097-dev-ed.develop.my.salesforce-setup.com/servlet/networks/switch?networkId=0DBgK000000ssMn&" class="project-link live" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live</a>
                     </div>
                 </div>
 
@@ -275,8 +345,8 @@
                         <span class="tech-tag">MS SQL</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link github"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="project-link live"><i class="fas fa-external-link-alt"></i> Live</a>
+                        <a href="https://github.com/Vedant-Waghmare/ds-job-trends.git" class="project-link github" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        <a href="https://ds-job-trends-2da7pujzkqpwxhvjcclfn5.streamlit.app/" class="project-link live" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live</a>
                     </div>
                 </div>
 
@@ -295,8 +365,8 @@
                         <span class="tech-tag">Streamlit</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link github"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="project-link live"><i class="fas fa-external-link-alt"></i> Live</a>
+                        <a href="https://github.com/Vedant-Waghmare/Movie-Recommender.git" class="project-link github" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        <a href="https://youtu.be/9b4qHWgMfG0" class="project-link live" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live</a>
                     </div>
                 </div>
 
@@ -313,8 +383,8 @@
                         <span class="tech-tag">MySQL</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link github"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="project-link live"><i class="fas fa-external-link-alt"></i> Live</a>
+                        <a href="https://github.com/Vedant-Waghmare/student-management-system.git" class="project-link github" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        <a href="https://youtu.be/hDSXdlFIeHs?si=kCBny6f2nqujvVYC" class="project-link live" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live</a>
                     </div>
                 </div>
 
@@ -333,8 +403,8 @@
                         <span class="tech-tag">JavaScript</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link github"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="project-link live"><i class="fas fa-external-link-alt"></i> Live</a>
+                        <a href="https://github.com/Vedant-Waghmare/exam-management-system.git" class="project-link github" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        <a href="https://youtu.be/RJkNqtKIzE0?si=YByjh6OT2fbBXCSI" class="project-link live" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live</a>
                     </div>
                 </div>
             </div>
@@ -385,7 +455,7 @@
                     <div class="cert-icon"><i class="fas fa-award"></i></div>
                     <div class="cert-info">
                         <h4>Salesforce Admin Certification</h4>
-                        <div class="issuer">Salesforce</div>
+                        <div class="issuer">Udemy</div>
                         <div class="year">2026</div>
                     </div>
                 </div>
@@ -393,7 +463,7 @@
                     <div class="cert-icon"><i class="fas fa-award"></i></div>
                     <div class="cert-info">
                         <h4>Salesforce Development Certification</h4>
-                        <div class="issuer">Salesforce</div>
+                        <div class="issuer">Udemy</div>
                         <div class="year">2026</div>
                     </div>
                 </div>
@@ -401,7 +471,7 @@
                     <div class="cert-icon"><i class="fas fa-award"></i></div>
                     <div class="cert-info">
                         <h4>AWS Cloud Practitioner Essentials</h4>
-                        <div class="issuer">Amazon Web Services</div>
+                        <div class="issuer">Udemy</div>
                         <div class="year">2025</div>
                     </div>
                 </div>
@@ -409,8 +479,8 @@
                     <div class="cert-icon"><i class="fas fa-award"></i></div>
                     <div class="cert-info">
                         <h4>Complete Full Stack Development</h4>
-                        <div class="issuer">Online Course</div>
-                        <div class="year">2024</div>
+                        <div class="issuer">Udemy</div>
+                        <div class="year">2025</div>
                     </div>
                 </div>
                 <div class="cert-card reveal">
@@ -418,6 +488,22 @@
                     <div class="cert-info">
                         <h4>AI Tools Proficiency</h4>
                         <div class="issuer">Super Human AI Academy</div>
+                        <div class="year">2025</div>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon"><i class="fas fa-award"></i></div>
+                    <div class="cert-info">
+                        <h4>Java &amp; JDBC</h4>
+                        <div class="issuer">RJ Academy</div>
+                        <div class="year">2024</div>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon"><i class="fas fa-award"></i></div>
+                    <div class="cert-info">
+                        <h4>C, C++ Programming &amp; DSA</h4>
+                        <div class="issuer">RJ Academy</div>
                         <div class="year">2024</div>
                     </div>
                 </div>
@@ -435,14 +521,14 @@
             <div class="education-list">
                 <div class="edu-item reveal">
                     <div>
-                        <div class="edu-degree">B.E. in Computer Science &amp; Engineering</div>
+                        <div class="edu-degree">B.E. in Computer Science</div>
                         <div class="edu-institution">Sinhgad College of Engineering, Pune</div>
                     </div>
                     <span class="edu-year">2023 — 2026</span>
                 </div>
                 <div class="edu-item reveal">
                     <div>
-                        <div class="edu-degree">Diploma in Computer Engineering</div>
+                        <div class="edu-degree">Diploma in Engineering</div>
                         <div class="edu-institution">Government Polytechnic, Pune</div>
                     </div>
                     <span class="edu-year">2020 — 2023</span>
@@ -472,16 +558,15 @@
                     </div>
                     <div class="contact-detail">
                         <i class="fas fa-briefcase"></i>
-                        <span>Currently @ Cognizant</span>
+                        <span>Currently @ Cognizant Technology Solutions</span>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/vedant-waghmare-b4a408298?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/Vedant-Waghmare" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/vedant-waghmare-b4a408298?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Vedant-Waghmare" class="social-link" aria-label="GitHub" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
                         <a href="mailto:vedantw.2004@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
 
-                <!-- Contact form (uses JS, no <form> tag) -->
                 <div class="contact-form reveal">
                     <div class="form-group">
                         <label for="name">Your Name</label>
@@ -506,16 +591,13 @@
         </div>
     </section>
 
-    <!-- ============================================
-         FOOTER
-         ============================================ -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>© 2026 Vedant Waghmare. Crafted with <span>♥</span> and lots of code.</p>
+            <p>© 2026 Vedant Waghmare · Crafted with <span>♥</span> and lots of code.</p>
         </div>
     </footer>
 
-    <!-- Back to Top button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
@@ -525,21 +607,115 @@
          ============================================ -->
     <script>
         /* ----------------------------------------------
-           Navbar shrink + back-to-top toggle
+           Page Loader — hide after page loads
+           ---------------------------------------------- */
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 600);
+        });
+
+        /* ----------------------------------------------
+           Theme Toggle (Dark / Light)
+           Persists choice in localStorage
+           ---------------------------------------------- */
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        updateMetaThemeColor(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateMetaThemeColor(newTheme);
+        });
+
+        function updateMetaThemeColor(theme) {
+            const meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#fafafa');
+        }
+
+        /* ----------------------------------------------
+           Scroll Progress Bar + Navbar + Back-to-Top
            ---------------------------------------------- */
         const navbar = document.getElementById('navbar');
         const backToTop = document.getElementById('backToTop');
+        const scrollProgress = document.getElementById('scrollProgress');
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            const scrolled = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrolled / docHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+
+            if (scrolled > 50) navbar.classList.add('scrolled');
             else navbar.classList.remove('scrolled');
 
-            if (window.scrollY > 400) backToTop.classList.add('visible');
+            if (scrolled > 400) backToTop.classList.add('visible');
             else backToTop.classList.remove('visible');
         });
 
         /* ----------------------------------------------
-           Mobile hamburger menu
+           Particles Background
+           ---------------------------------------------- */
+        const particlesContainer = document.getElementById('particles');
+        function createParticles() {
+            const count = window.innerWidth < 768 ? 15 : 30;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                p.style.animationDelay = Math.random() * 10 + 's';
+                p.style.opacity = (Math.random() * 0.4 + 0.1).toString();
+                p.style.width = p.style.height = (Math.random() * 4 + 2) + 'px';
+                particlesContainer.appendChild(p);
+            }
+        }
+        createParticles();
+
+        /* ----------------------------------------------
+           Typing Animation in Hero
+           ---------------------------------------------- */
+        const phrases = [
+            'Salesforce Developer',
+            'Java Developer',
+            'Full Stack Engineer',
+            'AI Enthusiast'
+        ];
+        const typedEl = document.getElementById('typedText');
+        let phraseIdx = 0, charIdx = 0, isDeleting = false;
+
+        function typeLoop() {
+            const current = phrases[phraseIdx];
+            if (isDeleting) {
+                typedEl.textContent = current.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typedEl.textContent = current.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+            if (!isDeleting && charIdx === current.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+            setTimeout(typeLoop, typeSpeed);
+        }
+        typeLoop();
+
+        /* ----------------------------------------------
+           Mobile Hamburger Menu
            ---------------------------------------------- */
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
@@ -551,7 +727,7 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Close mobile menu when a link is clicked
+        // Close on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('open');
@@ -561,32 +737,40 @@
             });
         });
 
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains('open')) {
+                navLinks.classList.remove('open');
+                const icon = hamburger.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
+        });
+
         /* ----------------------------------------------
-           Back to top: scroll to top
+           Back to Top
            ---------------------------------------------- */
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         /* ----------------------------------------------
-           Reveal-on-scroll using IntersectionObserver
+           Reveal-on-scroll
            ---------------------------------------------- */
-        const revealElements = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, i) => {
                 if (entry.isIntersecting) {
                     setTimeout(() => entry.target.classList.add('active'), i * 60);
-                    observer.unobserve(entry.target);
+                    revealObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
-        revealElements.forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
         /* ----------------------------------------------
-           Animated stat counters
+           Animated Stat Counters
            ---------------------------------------------- */
-        const statNumbers = document.querySelectorAll('.stat-number');
         const statObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -608,18 +792,55 @@
             });
         }, { threshold: 0.5 });
 
-        statNumbers.forEach(num => statObserver.observe(num));
+        document.querySelectorAll('.stat-number').forEach(num => statObserver.observe(num));
 
         /* ----------------------------------------------
-           Contact form — Powered by EmailJS
-           Sends real emails to vedantw.2004@gmail.com
+           Active Nav Link Highlighting
            ---------------------------------------------- */
-
-        // Initialize EmailJS with your public key
-        (function() {
-            emailjs.init({
-                publicKey: "1Wrj8MhiM8MoPO2v_",
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY + 100;
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                const id = section.getAttribute('id');
+                const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+                if (link) {
+                    if (scrollY >= top && scrollY < top + height) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                }
             });
+        });
+
+        /* ----------------------------------------------
+           3D Tilt Effect on Project Cards (desktop only)
+           ---------------------------------------------- */
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 30;
+                    const rotateY = (centerX - x) / 30;
+                    card.style.transform = `translateY(-10px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        }
+
+        /* ----------------------------------------------
+           Contact Form — EmailJS
+           ---------------------------------------------- */
+        (function() {
+            emailjs.init({ publicKey: "1Wrj8MhiM8MoPO2v_" });
         })();
 
         const sendBtn = document.getElementById('sendBtn');
@@ -634,87 +855,48 @@
             const email = emailInput.value.trim();
             const message = messageInput.value.trim();
 
-            // Basic validation
             if (!name || !email || !message) {
                 showStatus('error', 'Please fill in all fields before sending.');
                 return;
             }
 
-            // Email format validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 showStatus('error', 'Please enter a valid email address.');
                 return;
             }
 
-            // Disable button + show loading state
             const originalBtnHTML = sendBtn.innerHTML;
             sendBtn.disabled = true;
             sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
             try {
-                // Template parameters — these MUST match the variables in your EmailJS template
-                const templateParams = {
+                await emailjs.send('service_4h40w84', 'template_kbf1f8h', {
                     from_name: name,
                     from_email: email,
                     message: message,
-                };
+                });
 
-                // Send email via EmailJS
-                await emailjs.send(
-                    'service_4h40w84',     // Service ID
-                    'template_kbf1f8h',    // Template ID
-                    templateParams
-                );
-
-                // Success!
                 showStatus('success', "Thanks! Your message has been sent. I'll get back to you soon.");
                 nameInput.value = '';
                 emailInput.value = '';
                 messageInput.value = '';
             } catch (error) {
                 console.error('EmailJS error:', error);
-                showStatus('error', 'Oops! Something went wrong. Please try again or email me directly at vedantw.2004@gmail.com');
+                showStatus('error', 'Oops! Something went wrong. Please try again or email me directly.');
             } finally {
-                // Restore button state
                 sendBtn.disabled = false;
                 sendBtn.innerHTML = originalBtnHTML;
             }
         });
 
-        // Helper function to show status messages
         function showStatus(type, message) {
             formStatus.className = 'form-status ' + type;
             formStatus.innerHTML = type === 'success'
                 ? `<i class="fas fa-check-circle"></i> ${message}`
                 : `<i class="fas fa-exclamation-circle"></i> ${message}`;
-
-            // Auto-hide after 6 seconds
-            setTimeout(() => {
-                formStatus.className = 'form-status';
-            }, 6000);
+            setTimeout(() => { formStatus.className = 'form-status'; }, 6000);
         }
-
-        /* ----------------------------------------------
-           Active nav link highlighting
-           ---------------------------------------------- */
-        const sections = document.querySelectorAll('section[id]');
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY + 100;
-            sections.forEach(section => {
-                const top = section.offsetTop;
-                const height = section.offsetHeight;
-                const id = section.getAttribute('id');
-                const link = document.querySelector(`.nav-links a[href="#${id}"]`);
-                if (link) {
-                    if (scrollY >= top && scrollY < top + height) {
-                        link.style.color = 'var(--text-primary)';
-                    } else {
-                        link.style.color = '';
-                    }
-                }
-            });
-        });
     </script>
 </body>
 </html>
