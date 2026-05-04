@@ -625,31 +625,6 @@ section:not(:last-of-type)::after {
     50% { transform: translate(30px, -30px); }
 }
 
-/* Scroll indicator */
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    animation: bounce 2s ease-in-out infinite;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
-}
-
-.scroll-indicator i {
-    font-size: 1.2rem;
-    color: var(--accent);
-}
-
 /* ============================================
    ABOUT
    ============================================ */
