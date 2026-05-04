@@ -405,30 +405,22 @@ section {
     background: linear-gradient(135deg, var(--accent), var(--accent-purple));
     position: relative;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 3px;
     overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.profile-photo::before {
-    content: '';
-    position: absolute;
-    inset: 3px;
-    background: var(--bg-secondary);
+.profile-photo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px -10px var(--accent-glow);
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 18px;
-}
-
-.profile-photo::after {
-    content: 'VW';
-    position: absolute;
-    font-size: 5rem;
-    font-weight: 800;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-family: 'JetBrains Mono', monospace;
+    display: block;
 }
 
 .about-text h3 {
@@ -1002,17 +994,39 @@ section {
 
 .form-status {
     margin-top: 1rem;
-    padding: 0.75rem;
+    padding: 0.75rem 1rem;
     border-radius: 8px;
     font-size: 0.9rem;
     text-align: center;
     display: none;
+    animation: fadeIn 0.4s ease;
 }
 .form-status.success {
     display: block;
     background: rgba(34, 197, 94, 0.1);
     border: 1px solid rgba(34, 197, 94, 0.3);
     color: #22c55e;
+}
+.form-status.error {
+    display: block;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+.form-status i {
+    margin-right: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Disabled button state (during sending) */
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
 }
 
 /* ============================================
