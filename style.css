@@ -819,6 +819,87 @@ section {
 }
 
 /* ============================================
+   KEY STRENGTHS
+   ============================================ */
+.strengths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+.strength-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.strength-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.strength-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 20px 40px -20px var(--accent-glow);
+}
+
+.strength-card:hover::before {
+    opacity: 0.04;
+}
+
+.strength-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.strength-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 1rem;
+    border-radius: 14px;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+}
+
+.strength-card:hover .strength-icon {
+    background: var(--gradient);
+    color: #ffffff;
+    border-color: transparent;
+    transform: scale(1.05);
+}
+
+.strength-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.strength-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ============================================
    EDUCATION
    ============================================ */
 .education-list {
